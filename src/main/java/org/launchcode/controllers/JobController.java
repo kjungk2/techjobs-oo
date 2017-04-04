@@ -62,9 +62,10 @@ public class JobController {
 
             // add it to the model for display and redirect
             model.addAttribute("job", newJob);
-            model.addAttribute("id", newJob.getId());
+            //model.addAttribute("id", newJob.getId());
             // return "job-detail"; //this currently worked but didn't redirect to /job?id=X
-            return "redirect:job-detail";
+            String idString = Integer.toString(newJob.getId());
+            return "redirect:?id=" + idString;
         }
     }
 }
