@@ -1,5 +1,7 @@
 package org.launchcode.controllers;
 
+import org.launchcode.models.Job;
+import org.launchcode.models.JobFieldType;
 import org.launchcode.models.forms.JobForm;
 import org.launchcode.models.data.JobData;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,9 @@ public class JobController {
     public String index(Model model, int id) {
 
         // TODO #1 - get the Job with the given ID and pass it into the view
-
+        Job someJob = jobData.findById(id);
+        model.addAttribute("job", someJob);
+        model.addAttribute("jobFieldTypes", JobFieldType.values());
         return "job-detail";
     }
 
